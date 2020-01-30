@@ -1,7 +1,7 @@
-os: trusty
+os: linux
+dist: bionic
 language: java
 cache:
-  apt: true
   directories:
     - $HOME/.m2
     - $HOME/.downloads
