@@ -1,17 +1,16 @@
-dist: trusty
+os: trusty
 language: java
 cache:
   apt: true
   directories:
     - $HOME/.m2
     - $HOME/.downloads
-sudo: true
 
 before_install:
   - echo 'MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"' >~/.mavenrc
   - mkdir -p $HOME/.downloads
 
-matrix:
+jobs:
   fast_finish: true
   include:
     # checkstyle
