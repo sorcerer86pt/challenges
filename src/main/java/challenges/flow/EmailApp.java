@@ -9,7 +9,7 @@ public class EmailApp implements IApp<String> {
   private Queue<String> messages;
 
   public EmailApp() {
-    this.messages = new LinkedList<String>();
+    this.messages = new LinkedList<>();
   }
 
   public String in(IEvent event) throws EventException, ProtocolException, ActionException {

@@ -1,6 +1,8 @@
 package challenges.flow;
 
-import flow.*;
+import flow.Engine;
+import flow.IAdapter;
+import flow.IAgent;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -14,7 +16,7 @@ public class EmailTest {
 
   @Test
   public void testRun_AdapterIsCompliantWithProtocol_AppHasHelloMessage() throws Exception {
-    IAgent user = new UserAgent();
+    IAgent user = new UserAgent("hello");
     Map<String, IAdapter> adapters = new HashMap<String, IAdapter>();
     adapters.put("EMAIL", new EmailAdapter());
 
