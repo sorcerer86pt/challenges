@@ -1,0 +1,36 @@
+dist: xenial
+language: java
+cache:
+  apt: true
+  directories:
+    - $HOME/.m2
+    - $HOME/.downloads
+sudo: true
+
+before_install:
+  - echo 'MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"' >~/.mavenrc
+  - mkdir -p $HOME/.downloads
+
+matrix:
+  fast_finish: true
+  include:
+    # checkstyle
+    - jdk: oraclejdk8
+      env:
+        - DESC="checkstyle"
+        - CMD="mvn clean checkstyle:check"
+        - LANG=en_US.utf8
+    # unit tests (oraclejdk8)
+    - jdk: oraclejdk8
+      env:
+        - DESC="oraclejdk8 unit tests"
+        - CMD="mvn clean test -Dcheckstyle.skip=true"
+        - LANG=en_US.utf8
+    # unit tests (openjdk8)
+    - jdk: openjdk8
+      env:
+        - DESC="openjdk8 unit tests"
+        - CMD="mvn clean test -Dcheckstyle.skip=true"
+        - LANG=en_US.utf8
+
+script: echo ${CMD}; ${CMD}
