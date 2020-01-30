@@ -5,3 +5,4 @@ language: java
 before_install:
   - echo 'MAVEN_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"' >~/.mavenrc
   - mkdir -p $HOME/.downloads
+  - git submodule update --init --recursive
