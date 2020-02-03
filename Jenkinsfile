@@ -15,7 +15,7 @@ pipeline {
         stage('build dependencies') {
             steps {
                 sh 'cd ./flow'
-                sh 'echo $PATH'
+                sh 'echo $PWD'
                 sh 'mvn clean install'
                 sh 'cd ..'
 
