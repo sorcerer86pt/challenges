@@ -16,7 +16,7 @@ pipeline {
             steps {
                 dir("${env.WORKSPACE}/flow"){
                     sh 'pwd'
-                    sh 'mvn clean install'
+                    sh 'mvn -B -DskipTests clean install'
                }
 
             }
@@ -25,7 +25,7 @@ pipeline {
         stage('build project') {
             steps {
                 dir("${env.WORKSPACE}") {
-                    sh 'mvn clean install'
+                    sh 'mvn clean test'
                 }
 
             }
