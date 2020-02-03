@@ -14,7 +14,7 @@ pipeline {
 
         stage('build dependencies') {
             steps {
-                dir(${env.WORKSPACE}"/flow"){
+                dir(${env.WORKSPACE}/flow){
                     sh 'pwd'
                     sh 'mvn clean install'
                }
