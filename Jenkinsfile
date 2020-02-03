@@ -14,17 +14,19 @@ pipeline {
 
         stage('build dependencies') {
             steps {
-                sh 'cd ./flow'
-                sh 'echo $PWD'
-                sh 'mvn clean install'
-                sh 'cd ..'
+                dir(${env.WORKSPACE}"/flow"){
+                    sh 'pwd'
+                    sh 'mvn clean install'
+               }
 
             }
         }
 
         stage('build project') {
             steps {
-                sh 'mvn clean install'
+                dir(${env.WORKSPACE}) {
+                    sh 'mvn clean install'
+                }
 
             }
             post {
