@@ -1,17 +1,10 @@
 pipeline {
     agent {
-        docker { image 'maven:3.6.3-jdk-8' }
+        docker {
+            image 'maven:3.6.3-jdk-8'
+            args '-v $HOME/.m2:/root/.m2'}
     }
     stages{
-        stage ('Initialize') {
-            steps {
-                sh '''
-                    echo "PATH = ${PATH}"
-                    echo "M2_HOME = ${M2_HOME}"
-                '''
-            }
-        }
-
         stage('build dependencies') {
             steps {
                 dir("${env.WORKSPACE}/flow"){
